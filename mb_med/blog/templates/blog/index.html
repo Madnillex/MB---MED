@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header %}
+{% include 'components/_header.html' %}
+{% endblock header %}
+
+{% block main %}
+<main class="main">
+    <div class="container">
+        <div class="row">
+            <div class="main__block-courses">
+                <h2 class="main__courses-title">Kurslar</h2>
+                <div class="block__courses">
+                    {% for course in courses %}
+                    <div class="block__courses-img">
+                        <div class="img__courses-block">
+                            <a href="#!"><img src="{{ course.get_photo }}" alt="" class="courses-img"></a>
+                        </div>
+                        <p class="courses-text">{{ course.title }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <h2 class="main__specialists-title">O'qituvchilar</h2>
+            <div class="main__block-specialists">
+                {% for teacher in teachers %}
+                <div class="main__block-special">
+                    <div class="main__specialists-item">
+                        <div class="specialists__item-left">
+                            <h2 class="specialists__item-title">{{ teacher.name }}</h2>
+                            <p class="specialists__item-datsent">{{ teacher.course.title }}</p>
+                            <p class="specialists__item-address">{{ teacher.year }} yillik malakali Mutaxasislar</p>
+                            <div class="block__social">
+                                <a href="{{ teacher.gmail }}" class="specialists__item-social"><span
+                                        class="fab fa-google google"></span></a>
+                                <a href="{{ teacher.instagram }}" class="specialists__item-social"><span
+                                        class="fab fa-instagram-square instagram"></span></a>
+                                <a href="{{ teacher.telegram }}" class="specialists__item-social"><span
+                                        class="fab fa-telegram telegram"></span></a>
+                                <a href="{{ teacher.facebook }}" class="specialists__item-social"><span
+                                        class="fab fa-facebook facebook"></span></a>
+                            </div>
+                            <div class="main__block-phone">
+                                <a href="tel:{{ teacher.phone }}"><span class="fas fa-phone-alt phone"></span></a>
+                                <a href="tel:{{ teacher.phone }}" class="specialists__item-number">{{ teacher.phone }}</a>
+                            </div>
+                        </div>
+                        <div class="specialists__item-right">
+                            <img src="{{ teacher.get_photo }}" alt=""
+                                 class="specialists__item-img" style="width: 300px; height:300px;" >
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="main__block-form">
+        <div class="container container-bg">
+            <div class="row reverse">
+                <div class="main__form-left">
+                    <h2 class="main__form-title">Онлайн консультация специалиста
+                        по аудио и видео связи, <span class="form__title-span">бесплатно</span>
+                    </h2>
+                    <p class="main__form-text">Укажите cвой номер телефона, мы перезвоним и подберем для вас удобное
+                        время для консультации.
+                        Или позвоните нам сами — <a href="tel:+998998889977" class="form__number"> +998 99 888 99
+                            77</a>
+                    </p>
+                    <div class="main__phone-form">
+                        <input type="text" class="form__input-number" placeholder="+998" maxlength="13">
+                        <a href="#!" class="main__form-btn">Записаться на вебинар</a>
+                    </div>
+                    <p class="main__phone-info">Записываясь на услугу вы даёте согласие на<span
+                            class="phone__info-span"> обработку своих персональных данных</span></p>
+                </div>
+                <div class="main__form-right"><img src="img/main-form.png" alt="" class="main__from-img"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main__block-about">
+        <div class="container">
+            <div class="row">
+                <h2 class="main__about-title">О нас</h2>
+                <div class="main__about-block">
+                    <div class="main__about-left">
+                        <p class="about__left-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor
+                            semper nulla ut turpis blandit duis orci imperdiet habitant. Fermentum, id iaculis aenean
+                            volutpat. Ornare consectetur sit a quam. At blandit ornare nulla lectus id pellentesque
+                            risus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor semper nulla ut turpis
+                            blandit duis orci imperdiet habitant. Fermentum, id iaculis aenean volutpat. Ornare
+                            consectetur sit a quam. At blandit ornare nulla lectus id pellentesque risus.</p>
+                        <div class="about__left-img">
+                            <img src="img/main-about.png" alt="" class="main__about-img">
+                        </div>
+                    </div>
+                    <div class="main__about-right">
+                        <p class="main__about-text text__two">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Tortor
+                            semper nulla ut turpis blandit duis orci imperdiet habitant. Fermentum, id iaculis
+                            aenean volutpat. Ornare consectetur sit a quam. At blandit ornare nulla lectus id
+                            pellentesque risus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor
+                            semper nulla ut turpis blandit duis orci imperdiet habitant. Fermentum, id iaculis
+                            aenean volutpat. Ornare consectetur sit a quam. At blandit ornare nulla lectus id
+                            pellentesque risus.</p>
+                        <p class="main__about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor
+                            semper nulla ut turpis blandit duis orci imperdiet habitant. Fermentum, id iaculis
+                            aenean volutpat. Ornare consectetur sit a quam. At blandit ornare nulla lectus id
+                            pellentesque risus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="main__contacts-title">Контакты</h2>
+    <div class="main__block-contacts">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d187.24951826793898!2d69.21720819368552!3d41.3307809651236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0d448e0c75%3A0x7238566d7dd447a3!2sSABA&#39;%20TA&#39;LIM!5e0!3m2!1sru!2s!4v1670133382626!5m2!1sru!2s"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" class="main__block-maps"></iframe>
+
+        <div class="main__contacts-block">
+            <a href="#!" class="main__contacts-btn">Main</a>
+            <div class="main__blocks">
+                <div class="main__block-one">
+                    <a href="#!" class="main__location-icon"><span class="fas fa-map-marker-alt"></span></a>
+                    <div class="block__location">
+                        <a href="#!" class="location-link">SABA' TA'LIM
+7a/1 Nurafshon ko'cha, Tashkent 100020</a>
+                    </div>
+                </div>
+                <div class="main__block-two">
+                    <a href="tel:+998712281694" class="main__number-icon"><span class="fas fa-phone-alt"></span></a>
+                    <div class="block__number">
+                        <a href="tel:+998712281694" class="number-link">+(998-71) 228-16-92</a>
+                        <a href="tel:+998712281694" class="number-link">+(998-71) 228-16-93</a>
+                        <a href="tel:+998712281694" class="number-link">+(998-71) 228-16-94</a>
+                    </div>
+                </div>
+                <div class="main__block-three">
+                    <a href="mailto:info@stardompharma.com" class="main__mail-icon"><span
+                            class="far fa-envelope"></span></a>
+                    <a href="mailto:info@stardompharma.com" class="mail-link">info@stardompharma.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}
+
